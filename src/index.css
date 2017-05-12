@@ -1,0 +1,19 @@
+#tasks-create {
+    width: 100%;
+    margin: 0 10px;
+}
+
+.task {
+    display: block;
+    padding: 5px;
+}
+
+.task:nth-child(2n) {
+  background: #efefef;
+}
+
+.task strong {
+    width: 250px;
+    display: inline-block;
+}
+

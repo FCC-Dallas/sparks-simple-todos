@@ -1,10 +1,22 @@
+'use strict';
+
 let tasks = [];
 
 function updateTasks () {
     let updatedHtml = '';
 
     for ( let task of tasks ) {
-        updatedHtml += `<li>${task.name}</li>`;
+        updatedHtml += `
+            <li class="task">
+                <strong>
+                    ${task.name}
+                </strong>
+                <span>
+                    <button onclick="window.moveTask('${task.name}', -1)">Move Up</button>
+                    <button onclick="window.moveTask('${task.name}', 1)">Move Down</button>
+                    <button onclick="window.removeTask('${task.name}')">Remove</button>
+                </span>
+            </li>`;
     }
 
     document.querySelector('#tasks-list').innerHTML = updatedHtml;
@@ -23,6 +35,21 @@ document.querySelector('#tasks-create-input').addEventListener("keypress", (even
     if (event.keyCode == 13) addTask();
 });
 
+window.removeTask = function (name) {
+    let result = tasks.find(task => {
+        return task.name === name;
+    });
+
+    if (result) result.remove();
+}
+
+window.moveTask = function (name, value) {
+    let result = tasks.find(task => {
+        return task.name === name;
+    });
+
+    if (result) result.move(value);
+}
 
 class Task {
     constructor(name) {
