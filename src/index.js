@@ -14,7 +14,7 @@ function updateTasks () {
                 <span>
                     <button onclick="window.moveTask('${task.name}', -1)">Move Up</button>
                     <button onclick="window.moveTask('${task.name}', 1)">Move Down</button>
-                    <button onclick="window.removeTask('${task.name}')">Remove</button>
+                    <button onclick="window.removeTask('${task.name}')">Delete</button>
                 </span>
             </li>`;
     }
